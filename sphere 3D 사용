@@ -1,0 +1,40 @@
+void setup(){
+
+
+
+ size(500,500,P3D); //창 크기
+
+ translate(150,250,0);
+
+ sphere(140);
+
+}
+
+
+
+void draw(){}
+
+
+
+
+
+void setup(){
+
+
+
+ size(500,500,P3D); //창 크기
+
+ noStroke(); //선 제거
+
+ pointLight(255,0,0,0,0,250); //빛 (r,g,b,위치x,y,z);
+
+ translate(250,250,0);
+
+ sphere(150); //구 생성
+
+}
+
+
+
+void draw(){}
+
