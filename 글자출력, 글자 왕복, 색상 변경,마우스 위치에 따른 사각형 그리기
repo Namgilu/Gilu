@@ -1,0 +1,157 @@
+void setup(){
+
+  size(500,500);
+
+}
+
+void draw(){
+
+  
+
+ if(mousePressed)
+
+   line(pmouseX,pmouseY,mouseX,mouseY);
+
+}
+
+void keyPressed(){
+
+  if(key=='r') stroke(255,0,0);
+
+  else{
+
+  strokeWeight((key-'0')*10);
+
+  }
+
+}
+
+
+
+
+
+---------
+
+글자 출력
+
+
+
+void setup(){
+
+  size(500,500);
+
+  textSize(20);
+
+}
+
+int i;
+
+void draw(){
+
+  background(0);
+
+  text("Andong", i+=3, 200); //text("글자",이동속도,위치);
+
+  if(i>width) i=0;//폭의 길이
+
+}
+
+
+
+-----
+
+글자 왕복
+
+void setup(){
+
+  size(500,500);
+
+  textSize(20);
+
+}
+
+int i=1,spd=3;
+
+
+
+void draw(){
+
+  background(0);
+
+ 
+
+  text("andong",i+=spd , 200);
+
+  if(i>425) spd*=-1;
+
+  if(i==1) spd *=-1;
+
+
+
+}
+
+void keyPressed(){
+
+   spd = key-'0'; 
+
+}
+
+
+
+
+
+---------
+
+사각형 마우스위치에 따라 그리기
+
+void setup(){
+
+  size(500,500);
+
+  rectMode(CENTER); //사각형의 위치
+
+}
+
+void draw(){
+
+ translate(mouseX,mouseY);
+
+ rect(0,0,100,100);
+
+}
+
+--
+
+
+
+void setup(){
+
+  size(500,500);
+
+  rectMode(CENTER);
+
+
+
+}
+
+float f;
+
+void draw(){
+
+ translate(mouseX,mouseY);
+
+ rotate(f);
+
+ f +=0.05; 
+
+ scale(sin(f)+1);
+
+ fill(60,200,60);
+
+ rect(0,0,100,100);
+
+ fill(#AA0AAA);
+
+ ellipse(0,0,100,100);
+
+ }
