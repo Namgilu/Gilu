@@ -1,0 +1,75 @@
+PImage img;
+void setup() {
+  size(500, 500);
+  img = loadImage("C:\\m.png");
+
+}
+
+int i=16, spd=3;
+
+int l=90, spd2=4;
+
+void draw() {
+image(img,1,1,500,500);
+  
+  fill(255, 0, 0);
+  rect(20, i+25, 50, 50);
+  rect(25, i+75, 10, 30);
+  rect(52, i+75, 10, 30);
+  rect(10, i+25, 10, 30);
+  rect(70, i+25, 10, 30);
+  
+  fill(255, 255, 255);
+  ellipse(45, i+35, 25, 55);
+
+  fill(255, 0, 0);
+  rect(30, i+=spd, 30, 30);
+
+  fill(255, 255, 0);
+  ellipse(30, i, 15, 15);
+  ellipse(60, i, 15, 15);
+
+  fill(255, 255, 255);
+  ellipse(40, i+10, 5, 5);
+  ellipse(50, i+10, 5, 5);
+  ellipse(45, i+20, 15, 5);
+
+  //2번째
+  l+=spd2;
+  fill(50, 200, 50); //몸통
+  rect(l+25, 80, 50, 50);
+  rect(l+75, 80, 10, 30);
+  rect(l+60, 130, 10, 30);
+  rect(l+30, 130, 10, 30);
+  rect(l+15, 80, 10, 30);
+  
+  fill(255, 255, 255);
+  ellipse(l+50, 85, 25, 55);
+
+ fill(50, 200, 50); //머리
+  rect(l+35, 50, 30, 30);
+
+  fill(255, 255, 0);//귀
+  ellipse(l+35, 50, 15, 15);
+  ellipse(l+65, 50, 15, 15);
+
+  fill(255, 255, 255);//눈 코 입
+  ellipse(l+45, 60, 5, 5);
+  ellipse(l+55, 60, 5, 5);
+  ellipse(l+50, 70, 15, 5);
+
+  if (l>400){ spd2*=-1;
+  }
+  if (l<=20){ spd2*=-1;
+  }
+  if (i>400) spd*=-1;
+
+  if (i<=16) spd *=-1;
+  if(i <100&& l<50){spd*=-1;spd2*=-1;}
+}
+  
+
+void keyPressed() {
+
+  spd = key-'0';
+}
