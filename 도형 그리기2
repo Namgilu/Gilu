@@ -1,0 +1,37 @@
+size(520, 520);
+
+
+
+fill(255,255,0);
+
+arc(90, 160, 180, 180, radians(35), radians(325));
+
+fill(0);
+
+ellipse(90,100,20,20);
+
+fill(255,255,0);
+
+arc(220, 160, 80, 80, radians(35), radians(325));
+
+fill(0);
+
+ellipse(220,140,10,10);
+
+
+
+fill(255,255,0);
+
+arc(270, 160, 20, 20, radians(35), radians(325));
+
+fill(0);
+
+ellipse(270,155,2,2);
+
+fill(255,255,0);
+
+arc(300, 160, 20, 20, radians(35), radians(325));
+
+fill(0);
+
+ellipse(300,155,2,2);
