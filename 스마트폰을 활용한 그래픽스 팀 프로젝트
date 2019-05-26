@@ -1,0 +1,64 @@
+import processing.net.*;
+float theta;   
+int p=0;
+Server s;
+Client c;
+float angle = 0;
+void setup(){
+  size(720,480);
+  background(255);
+  smooth();
+  s = new Server(this, 12345);
+}
+void foo(){
+  
+  background(255);
+  translate(p, p);
+  rotate(radians(frameCount));
+  translate(-360, -180);
+  
+  rotate(angle);
+  
+  stroke(0);
+  strokeWeight(4);
+  fill(#d59729);
+  //----------ear
+  ellipse(width/2-55, 85, 44, 44);
+  ellipse(width/2+55, 85, 44, 44);
+  
+  //------- face
+  ellipse(width/2, height/2-70, 210, 194);
+ 
+ //---------eye
+  fill(0);
+  ellipse(width/2-42, height/2-80, 10, 10);
+  ellipse(width/2+42, height/2-80, 10, 10);
+  
+  //----------eyebrow
+  strokeWeight(10);
+  line(width/2-25-40, height/2-105, width/2-25, height/2-105);
+  line(width/2+25, height/2-105, width/2+25+40, height/2-105);
+  
+  
+  //---------nose
+  strokeWeight(4);
+  fill(255);
+  arc(width/2-13, height/2-45, 32,30, radians(30), radians(400));
+  arc(width/2+13, height/2-45, 32,30, radians(210), radians(1000));
+  
+  fill(0);
+  ellipse(width/2, height/2-60, 16,14);
+}
+void draw() {
+  c
+ = s.available();
+  if(c!=null){
+    String msg = c.readString();
+    int n = msg.indexOf("\r\n\r\n")+4;
+    msg = msg.substring(n);
+    println(msg);
+    p = (int(msg) + 90)*3;
+    
+    foo();
+  }
+}
