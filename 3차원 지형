@@ -1,0 +1,84 @@
+int cols, rows;
+int scl = 15;
+int w=1200;
+int h=900;
+float flying1 = 0;
+float[][] terrain;
+float[][] col;
+int value=0;
+PImage img;
+void setup() {
+  size(800, 600, P3D);
+  cols=w/scl;
+  rows=h/scl;
+  terrain = new float[cols][rows];
+  col = new float[cols][rows];
+  img = loadImage("d://Cam.png");
+}
+float flying;
+void draw() {
+  lights();
+  /* pushMatrix();
+   translate(pmouseX, pmouseY, 255);
+   sphere(50);
+   popMatrix();
+   */
+ 
+  loadPixels();
+ 
+ 
+  flying -= 0.05;
+  float yoff=flying;
+  for (int y=0; y<rows; y++) {
+    float xoff=0;
+    for (int x=0; x<cols; x++) {
+      terrain[x][y]=map(noise(xoff, yoff), 0, 1, 1, 100);
+      xoff +=0.2;
+      col[x][y] = terrain[x][y];
+    }
+    yoff +=0.2;
+  }
+  float g=0;
+  float yoff1 = flying1;
+  for (int y = 0; y <height; y ++)
+  {
+    float xoff = 0.0;
+    for (int x = 0; x <width; x ++)
+    {
+      g = map(noise(xoff, yoff1), 0, 1, 100, 190);
+ 
+      pixels[x + y/3 * width] = color(128, g, 252);
+ 
+      pixels[x + y/3 * width] = color(0, g, 252);
+ 
+      xoff += 0.025;
+    }
+    yoff1 += 0.02;
+    flying1 -= 0.0001;
+  }
+  updatePixels();
+  noStroke();
+  translate(width/2, height/2);
+  rotateX(PI/3);
+  translate(-w/2, -h/2);
+  for (int y=0; y<rows-1; y++) {
+    beginShape(TRIANGLE_STRIP);
+    for (int x=0; x<cols; x++) {
+      fill(164+col[x][y], 164-col[x][y], 64-col[x][y]);
+      vertex(x*scl, y*scl, terrain[x][y]); 
+      vertex(x*scl, (y+1)*scl, terrain[x][y+1]);
+    }
+    endShape();
+  }
+  pushMatrix();
+  beginShape();
+  translate(pmouseX, pmouseY, terrain[pmouseX/20][pmouseY/20]+20);
+  image(img,pmouseX,-50,30,50);
+  image(img,pmouseX+30,-50,30,50);
+  image(img,pmouseX+60,-50,30,50);
+  image(img,pmouseX+90,-50,30,50);
+  fill(255, 128-g, 128-g);
+  //Making the pyramid
+  endShape();
+  popMatrix();
+}
