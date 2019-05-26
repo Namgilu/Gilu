@@ -1,0 +1,27 @@
+PImage img;
+
+void setup(){
+
+  size(500,500);
+
+  img = loadImage("c:\\sim.jpg"); //이미지 불러오기, 백슬레쉬 2개
+
+  imageMode(CENTER);
+
+}
+
+float f;
+
+void draw(){
+
+ translate(mouseX,mouseY);
+
+ rotate(f);
+
+ scale(sin(f)+1);
+
+ f -=0.05;
+
+image(img,0,0,100,100); //화면에 출력
+
+ }
